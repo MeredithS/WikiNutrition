@@ -12,9 +12,13 @@
 ###Technologies Used###
 
 *HTML
+
 *CSS
+
 *Ruby & Sinatra
+
 *SQL/ActiveRecord
+
 *JavaScript/jQuery
 
 ###Planning Materials###
