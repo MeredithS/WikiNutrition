@@ -1,0 +1,12 @@
+<h1>Nutrition Articles</h1>
+<% @articles.each do |article| %>
+ <ul>
+ 	<li>
+ 	Title: <%=article['title']%>
+ 	</br>
+ 	Date Published: <%=article['date_published']%>
+ 	</br>
+ 		<%author=Article.author%>
+ 	Author: <%=author%>
+ 	</li>
+ </ul>
