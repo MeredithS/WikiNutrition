@@ -24,4 +24,4 @@
 ###Planning Materials###
 
 ####ERD####
-![ERD](~/code/wdi/WikiNutrition/WikiNutrition_ERD.png)
+![ERD](/WikiNutrition_ERD.png)
