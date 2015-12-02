@@ -22,3 +22,6 @@
 *JavaScript/jQuery
 
 ###Planning Materials###
+
+####ERD####
+![ERD](~/code/wdi/WikiNutrition/WikiNutrition_ERD.png)
