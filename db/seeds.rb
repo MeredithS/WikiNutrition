@@ -8,7 +8,7 @@ users =[
 User.create(users)
 
 articles = [
-{title: "Veggies", date_published: DateTime.new(2015,12,01,8,37), content: "Veggies are soo Yummy", user_id: 1}
+{title: "Veggies", date_published: DateTime.new(2015,12,01,8,37), content: "Veggies are soo Yummy", img_url: "http://www.valeotraining.com/wp-content/uploads/2013/04/veggies-1.jpg", user_id: 1}
 ]
 
 Article.create(articles)

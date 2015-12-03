@@ -18,7 +18,8 @@ CREATE TABLE articles (
 	id INTEGER PRIMARY KEY, 
 	title VARCHAR(255), 
 	date_published DATETIME, 
-	content TEXT, 
+	content TEXT,
+	img_url TEXT, 
 	user_id REFERENCES users(id)
 );
 CREATE TABLE categories (
