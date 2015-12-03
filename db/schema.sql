@@ -21,10 +21,12 @@ CREATE TABLE articles (
 	content TEXT, 
 	user_id REFERENCES users(id)
 );
-CREATE TABLE categories (id INTEGER PRIMARY KEY, 
+CREATE TABLE categories (
+	id INTEGER PRIMARY KEY, 
 	name VARCHAR(255)
 );
-CREATE TABLE edit_times (id INTEGER PRIMARY KEY,
+CREATE TABLE edit_times (
+	id INTEGER PRIMARY KEY,
 	time DATETIME
 );
 CREATE TABLE articles_categories (
