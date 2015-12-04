@@ -1,9 +1,18 @@
 <form action="/articles" method="POST">
 <label for="title">Title:</label>
-<input id="title" type="text" name="title">
-<label for="content">Content:</label>
-<input id="content" type="text" name="content">
-<lable for="image">Image URL:</lable>
-<input id="image" type="text" name="img_url">
-<input type="submit" value="publish">
+	<input id="title" type="text" name="title">
+	<label for="content">Content:</label>
+	<input id="content" type="text" name="content">
+	<lable for="image">Image URL:</lable>
+	<input id="image" type="text" name="img_url">
+	<label for="category">Create a New Category:</label>
+	<input id="category" type="text" name="category">
+	<label for="category-drop">Or Choose From an Already Existing Category:</label>
+	<select id="category-drop"name="drop_down">
+		<option value="" disabled selected>Select</option>
+		<% @categories.each do |category| %>
+		<option value="<%=category.name%>"><%=category.name%></option>
+		<%end%>
+	</select>
+	<input type="submit" value="publish">
 </form>

@@ -1,4 +1,7 @@
-<h1>Nutrition Articles</h1>
+<%if @user %>
+<h1>Hello and Welcome <%=@user.f_name%>
+<%end%>
+<h3>Nutrition Articles</h3>
 <ul>
 	<% @articles.each do |article| %>
 	 	<li>
@@ -11,5 +14,22 @@
 	 	</li>
 	 <%end%>
 </ul>
+<h3>Sort By Category:</h3>
+<ul>
+	<%@categories.each do |category|%>
+	<li>
+		<a href="/articles/sortby/<%=category.name%>"><%=category.name.capitalize%></a>
+	</li>
+	<%end%>
+</ul>
 
+
+<%if @user%>
 <a href="/articles/new">Publish a new Article<a/>
+<form action="/sessions" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <button>Log Out</button>
+</form>
+<%else%>
+<h3>For more features please:</h3><a href="/login">Log In</a>
+<%end%>

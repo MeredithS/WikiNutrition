@@ -1,6 +1,31 @@
 <img src="<%=@article['img_url']%>">
 <h1><%=@article['title']%></h1>
-	<p><%=@article['content']%></p>
+	<p><%= @article.to_html %></p>
 <h4>By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
+
+<h3>Categories:</h3>
+<ul>
+	<%@art_cats.each do |art_cat|%>
+	<li><%=art_cat.name.capitalize%></li>
+	<%end%>
+</ul>
+
+
+<%if @user%>
+<a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
+<button>Add A Category</button>
+<form action="/articles/<%=@article['id']%>/edit/categories" method="POST">
+	<label for="category">Create a New Category:</label>
+	<input id="category" type="text" name="category">
+	<label for="category-drop">Or Choose From an Already Existing Category:</label>
+	<select id="category-drop"name="drop_down">
+		<option value="" disabled selected>Select</option>
+		<% @categories.each do |category| %>
+		<option value="<%=category.name%>"><%=category.name.capitalize%></option>
+		<%end%>
+	</select>
+	<input type="submit" value="publish">
+</form>
+<%end%>
 
 <a href="/articles">Back to Articles</a>

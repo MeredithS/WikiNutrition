@@ -1,7 +1,8 @@
-require"pry"
-require"sinatra"
+require "pry"
+require "sinatra"
+require "redcarpet"
 
-require_relative"db/config"
-require_relative"server"
+require_relative "db/config"
+require_relative "server"
 
 run App::Server

@@ -1,0 +1,15 @@
+<h1><%=@category.name%></h1>
+<ul>
+	<%@cat_arts.each do |cat_art|%>
+	<li>
+		Title:<a href="/articles/<%=cat_art.id%>"><%=cat_art.title%></a>
+		</br>
+	 	Date Published: <%=cat_art.date_published%>
+	 	</br>
+	 		<%author=cat_art.user%>
+	 	Author: <%=author.l_name%>, <%=author.f_name%>
+	</li>
+	<%end%>
+</ul>
+
+<a href="/articles">Back to Articles</a>

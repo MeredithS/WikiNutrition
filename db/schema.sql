@@ -7,12 +7,11 @@ DROP TABLE IF EXISTS article_edit_times;
 
 CREATE TABLE users (
 	id INTEGER PRIMARY KEY, 
+	user_name VARCHAR(255),
+	password_digest VARCHAR(255),
 	f_name VARCHAR(255), 
 	l_name VARCHAR(255), 
-	address VARCHAR(255), 
-	city VARCHAR(255), 
-	state VARCHAR(2), 
-	zip INTEGER
+	e_mail VARCHAR(255)
 );
 CREATE TABLE articles (
 	id INTEGER PRIMARY KEY, 
