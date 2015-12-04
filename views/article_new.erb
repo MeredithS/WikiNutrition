@@ -11,7 +11,7 @@
 	<select id="category-drop"name="drop_down">
 		<option value="" disabled selected>Select</option>
 		<% @categories.each do |category| %>
-		<option value="<%=category.name%>"><%=category.name%></option>
+		<option value="<%=category.name%>"><%=category.name.capitalize%></option>
 		<%end%>
 	</select>
 	<input type="submit" value="publish">

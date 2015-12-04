@@ -2,15 +2,20 @@
 <h1><%=@article['title']%></h1>
 	<p><%= @article.to_html %></p>
 <h4>By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
-
+<%if @user%>
+<button>Contact Author</button>
+<%end%>
+<div class="modal-container">
+	<div clas="modal-content">
+		<button class="close">X</button>
+	</div>
+</div>
 <h3>Categories:</h3>
 <ul>
 	<%@art_cats.each do |art_cat|%>
 	<li><%=art_cat.name.capitalize%></li>
 	<%end%>
 </ul>
-
-
 <%if @user%>
 <a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
 <button>Add A Category</button>
@@ -24,7 +29,7 @@
 		<option value="<%=category.name%>"><%=category.name.capitalize%></option>
 		<%end%>
 	</select>
-	<input type="submit" value="publish">
+	<input type="submit" value="Add Category">
 </form>
 <%end%>
 

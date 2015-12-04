@@ -14,7 +14,7 @@ articles = [
 Article.create(articles)
 
 categories = [
-{name: 'Vegetables'}
+{name: 'VEGETABLES'}
 ]
 
 Category.create(categories)

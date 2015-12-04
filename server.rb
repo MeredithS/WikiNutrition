@@ -32,7 +32,7 @@ module App
 			@article = Article.find(params[:id])
 			@categories = Category.all
 			@art_cats=@article.categories			
-			puts @categories
+			
 			erb :show
 		end
 
@@ -42,25 +42,23 @@ module App
 			erb :edit_article
 		end
 
-		post("/articles/:id/edit/categories") do
-			id = params[:id]
-			article=Article.find(params[:id])
+		post("/articles") do
+			article=Article.create(title: params[:title], date_published: DateTime.now, content: params[:content], img_url: params[:img_url], user_id: session[:user_id])
+			binding.pry
 			if params[:category] && params[:drop_down]
 				cat1=Category.find_by({name: params[:drop_down].upcase})
-				cat2=Category.create(name: params[:category].upcase)
+				cat2=Category.create(name: params[:category].upcase.chomp)
 				article.categories<<cat1
 				article.categories<<cat2
-			elsif params[:category] === nil && article.categories.find_by({name: params[:drop_down].upcase}) === nil
+			elsif params[:category] === "" && article.categories.find_by({name: params[:drop_down].upcase}) === nil
 				cat1=Category.find_by({name: params[:drop_down].upcase})
 				article.categories<<cat1
 			elsif params[:drop_down] === nil && article.categories.find_by({name: params[:category].upcase}) === nil
-				cat2=Category.create(name: params[:category].upcase)
+				cat2=Category.create(name: params[:category].upcase.chomp)
 				article.categories<<cat2
 			end
-			redirect to ("/articles/#{id}")
-
+			redirect to("/articles")
 		end
-
 
 		patch("/articles/:id") do
 			id = params[:id]
@@ -72,23 +70,26 @@ module App
 
 		end
 
-
-		post("/articles") do
-			article=Article.create(title: params[:title], date_published: DateTime.now, content: params[:content], img_url: params[:img_url], user_id: session[:user_id])
-			if params[:category] && params[:drop_down]
+		post("/articles/:id/edit/categories") do
+			binding.pry
+			id = params[:id]
+			article=Article.find(params[:id])
+			if params[:category] != "" && params[:drop_down]
 				cat1=Category.find_by({name: params[:drop_down].upcase})
-				cat2=Category.create(name: params[:category].upcase)
+				cat2=Category.create(name: params[:category].upcase.chomp)
 				article.categories<<cat1
 				article.categories<<cat2
-			elsif params[:category] === nil && article.categories.find_by({name: params[:drop_down].upcase}) === nil
+			elsif params[:category] == "" && article.categories.find_by({name: params[:drop_down].upcase}) == nil
 				cat1=Category.find_by({name: params[:drop_down].upcase})
 				article.categories<<cat1
-			elsif params[:drop_down] === nil && article.categories.find_by({name: params[:category].upcase}) === nil
-				cat2=Category.create(name: params[:category].upcase)
+			elsif params[:drop_down] == nil && article.categories.find_by({name: params[:category].upcase}) == nil
+				cat2=Category.create(name: params[:category].upcase.chomp)
 				article.categories<<cat2
 			end
-			redirect to("/articles")
+			redirect to ("/articles/#{id}")
+
 		end
+
 
 		get ("/login") do
 			erb :login
