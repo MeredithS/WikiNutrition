@@ -116,11 +116,13 @@ module App
 		end
 
 		post("/users") do
-			User.create(user_name: params[:user_name], password: params[:password], f_name: params[:f_name], l_name: params[:l_name], e_mail: params[:e_mail])
-			redirect to ("/login")
+			if params.values.include? ""
+				redirect to ("/users/new")
+			else
+				User.create(user_name: params[:user_name], password: params[:password], f_name: params[:f_name], l_name: params[:l_name], e_mail: params[:e_mail])
+				redirect to ("/login")
+			end
 		end
-
-		binding.pry
 
 
 	end

@@ -1,3 +1,88 @@
+.landing-page{
+	background-image: url("http://www.ihcbesthealth.com/wp-content/uploads/2015/04/Fruits-and-Veggies.jpg");
+	background-size: 100%;
+	height: 100vh;
+
+}
+.landing-page-square{
+	background-color: white;
+	position: absolute;
+	width: 38%;
+	margin: 0 auto;
+	margin-top: 20%;
+	margin-left: 28%;
+	border-radius: 10%;
+}
+
+.landing-page-content{
+	width:70%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+
+#login-page{
+	background-color: #748BA7;
+	height: 100vh;
+}
+
+#login-container{
+	width: 50%;
+	height: 30%;
+	position: absolute;
+	background-color: #A8DB92;
+	margin: 0 auto;
+	margin-left: 23%;
+	margin-top: 20%;
+	border: 1px solid: #552000;
+}
+
+#login-content{
+	width: 75%;
+	margin: 0 auto;
+	padding: 60px;
+	margin-top: 3%;
+	border: 1px solid #552000;
+
+}
+
+.sign-setup{
+	background-color: #A8DB92;
+	height: 100vh;
+	}
+
+.sign-up-container{
+	border: 2px solid #552000;
+	width: 30%;
+	margin-left: 5%;
+	height: 60%;
+	/*display: inline-block;*/
+	float: left;
+	background-color: #A8DB92;
+}
+
+#sign-up-form{
+	margin-top: 10%;
+	list-style: none;
+}
+
+#sign-up-form li{
+	margin-top: 20px;
+}
+
+#sign-up-button{
+	display:block;
+	width: 30%;
+	margin-left: 30%;
+	margin-top: 10%;
+	
+}
+
+#side-image{
+	float: right;
+	margin-right: 15%;
+	border-radius: 100%
+}
+
 .modal-container{
 	display: none;
 	position: fixed;
@@ -21,6 +106,10 @@
 	width: 50%;
 	margin: 0 auto;
 }
+ #category-form{
+ 	display:none;
+ 	border: 2px solid black;
+ }
 
 #author{
 	display: inline;
@@ -31,4 +120,35 @@
 }
 #last-update{
 	display: inline;
+}
+
+#welcome{
+	margin-bottom: 0px;
+}
+
+#slogan{
+	margin-top: 0px;
+	margin-left: 5%;
+}
+
+#article-link{
+	display: block;
+	width: 30%;
+	margin: 0 auto;
+}
+
+#account{
+	margin-left: 10%;
+}
+#login{
+	position: absolute;
+	margin-left: 23%;
+	margin-top: 15%;
+	
+}
+
+#content{
+	width: 50%;
+	height: 500px;
+	text-align: top;
 }

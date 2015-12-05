@@ -16,6 +16,7 @@
 </div><!--end of modal-container-->
 <h5 id="last-update">Last updated:<%=@article.edit_times.last.time%>   By User Name: <%=@article.edit_times.last.users.first.user_name%></h5>
 <%if @user%>
+<a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
 <button id="contact-editor">Contact Recent Editor</button>
 <%end%>
 <div class="modal-container editor">
@@ -34,20 +35,21 @@
 	<%end%>
 </ul>
 <%if @user%>
-<a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
-<button>Add A Category</button>
-<form action="/articles/<%=@article['id']%>/edit/categories" method="POST">
-	<label for="category">Create a New Category:</label>
-	<input id="category" type="text" name="category">
-	<label for="category-drop">Or Choose From an Already Existing Category:</label>
-	<select id="category-drop"name="drop_down">
-		<option value="" disabled selected>Select</option>
-		<% @categories.each do |category| %>
-		<option value="<%=category.name%>"><%=category.name.capitalize%></option>
-		<%end%>
-	</select>
-	<input type="submit" value="Add Category">
-</form>
+<button id="add-category">Add A Category</button>
+<div id="category-form">
+	<form action="/articles/<%=@article['id']%>/edit/categories" method="POST">
+		<label for="category">Create a New Category:</label>
+		<input id="category" type="text" name="category">
+		<label for="category-drop">Or Choose From an Already Existing Category:</label>
+		<select id="category-drop"name="drop_down">
+			<option value="" disabled selected>Select</option>
+			<% @categories.each do |category| %>
+			<option value="<%=category.name%>"><%=category.name.capitalize%></option>
+			<%end%>
+		</select>
+		<input type="submit" value="Add Category">
+	</form>
+</div><!--end of category-form div -->
 <%end%>
 
 <a href="/articles">Back to Articles</a>
