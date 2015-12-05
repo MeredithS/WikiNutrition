@@ -1,3 +1,34 @@
-body{
-background-color: green;
+.modal-container{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	height: 100%;
+	width: 100%;
+}
+
+.modal-content{
+	position: relative;
+	top: 33%;
+	background-color: white;
+	width: 40%;
+	height: 20%;
+	margin: 0 30%;
+}
+
+.modal-info{
+	width: 50%;
+	margin: 0 auto;
+}
+
+#author{
+	display: inline;
+}
+#contact-author{
+	display: inline-block;
+	margin-right: 81%;
+}
+#last-update{
+	display: inline;
 }

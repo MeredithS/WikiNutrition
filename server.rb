@@ -65,7 +65,7 @@ module App
 			article=Article.find(params[:id])
 			article.update(title: params[:title], content: params[:content], img_url: params[:img_url])
 			edit_time=EditTime.create(time: DateTime.now)
-			article_edit_time=ArticleEditTime.create(article_id: params[:id], edit_time_id: edit_time.id, user_id: session[:user_id])
+			article_edit_time=ArticleEditTime.create(article_id: params[:id].to_i, edit_time_id: edit_time.id, user_id: session[:user_id])
 			redirect to ("articles/#{id}")
 
 		end

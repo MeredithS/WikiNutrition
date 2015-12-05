@@ -1,15 +1,32 @@
 <img src="<%=@article['img_url']%>">
 <h1><%=@article['title']%></h1>
 	<p><%= @article.to_html %></p>
-<h4>By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
+<h4 id="author">By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
 <%if @user%>
-<button>Contact Author</button>
+<button id="contact-author">Contact Author</button>
 <%end%>
-<div class="modal-container">
-	<div clas="modal-content">
-		<button class="close">X</button>
-	</div>
-</div>
+<div class="modal-container author">
+	<div class="modal-content">
+		<button class="close authors">X</button>
+		<div class="modal-info">
+		<h3>Author Name: <%=@article.user.f_name%> <%=@article.user.l_name%></h3>
+		<h3>E-mail: <%=@article.user.e_mail%></h3>
+		</div><!--end of modal-info-->
+	</div><!--end of modal-content-->
+</div><!--end of modal-container-->
+<h5 id="last-update">Last updated:<%=@article.edit_times.last.time%>   By User Name: <%=@article.edit_times.last.users.first.user_name%></h5>
+<%if @user%>
+<button id="contact-editor">Contact Recent Editor</button>
+<%end%>
+<div class="modal-container editor">
+	<div class="modal-content">
+		<button class="close editor">X</button>
+		<div class="modal-info">
+		<h3>Editor Name: <%=@article.edit_times.last.users.first.f_name%> <%=@article.edit_times.last.users.first.l_name%></h3>
+		<h3>E-mail: <%=@article.edit_times.last.users.first.e_mail%></h3>
+		</div><!--end of modal-info-->
+	</div><!--end of modal-content-->
+</div><!--end of modal-container-->
 <h3>Categories:</h3>
 <ul>
 	<%@art_cats.each do |art_cat|%>
