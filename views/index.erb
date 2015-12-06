@@ -3,25 +3,32 @@
 <%end%>
 <h3>Nutrition Articles</h3>
 <ul>
-	<% @articles.each do |article| %>
+	<% @sorted_articles.each do |article| %>
 	 	<li>
 	 	Title: <a href="/articles/<%=article['id']%>"><%=article['title']%></a>
 	 	</br>
-	 	Date Published: <%=article['date_published']%>
+	 	Date Published: <%=article['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
 	 	</br>
 	 		<%author=article.user%>
 	 	Author: <%=author.l_name%>, <%=author.f_name%>
 	 	</li>
 	 <%end%>
 </ul>
-<h3>Sort By Category:</h3>
-<ul>
-	<%@categories.each do |category|%>
-	<li>
-		<a href="/articles/sortby/<%=category.name%>"><%=category.name.capitalize%></a>
-	</li>
-	<%end%>
-</ul>
+<h4>Sort By:</h4>
+	<h5>Category:</h5>
+	<ul>
+		<%@categories.each do |category|%>
+		<li>
+			<a href="/articles/sortby/<%=category.name%>"><%=category.name.capitalize%></a>
+		</li>
+		<%end%>
+	</ul>
+	<h5>Recently Updated:</h5>
+	<ul>
+		<li>
+			<a href="/articles/recent">Recently Updated</a>
+		</li>
+	</ul>	
 
 
 <%if @user%>

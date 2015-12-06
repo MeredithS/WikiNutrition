@@ -1,0 +1,15 @@
+<h1>Recently Updated Articles</h1>
+<ul>
+	<% @recent_edits.each do |time|%>
+		<li>
+	 	Title: <a href="/articles/<%=time.articles.first['id']%>"><%=time.articles.first['title']%></a>
+	 	</br>
+	 	Date Published: <%=time.articles.first['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
+	 	</br>
+	 		<%author=time.users.first%>
+	 	Author: <%=author.l_name%>, <%=author.f_name%>
+	 	</li>
+	 <%end%>
+</ul>
+
+<a href="/articles">Back to Articles</a>

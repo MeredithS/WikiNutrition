@@ -1,13 +1,14 @@
 <form id="edit-form" action="/articles/<%=@article['id']%>" method="POST">
 <input type="hidden" name="_method" value="patch">
 <label for="title">Title:</label>
-<input id="title" type="text" name="title" value="<%=@article['title']%>">
+<textarea id="title" name="title"><%=@article['title']%></textarea>
 </br>
 <label for="content">Content:</label>
-<input id="content" type="text" name="content" value="<%=@article['content']%>">
+<textarea autofocus rows="60" cols="20" id="content" name="content"><%=@article['content']%></textarea>
 </br>
 <lable for="image">Image URL:</lable>
 <input id="image" type="text" name="img_url" value="<%=@article['img_url']%>">
 </br>
 <input type="submit" value="Update">
 </form>
+

@@ -20,6 +20,21 @@
 	padding-bottom: 10px;
 }
 
+#welcome{
+	margin-bottom: 0px;
+}
+
+#slogan{
+	margin-top: 0px;
+	margin-left: 5%;
+}
+
+#article-link{
+	display: block;
+	width: 30%;
+	margin: 0 auto;
+}
+
 #login-page{
 	background-color: #748BA7;
 	height: 100vh;
@@ -43,6 +58,21 @@
 	margin-top: 3%;
 	border: 1px solid #552000;
 
+}
+
+#account{
+	margin-left: 10%;
+}
+#login{
+	position: absolute;
+	margin-left: 23%;
+	margin-top: 15%;
+}
+
+#content{
+	width: 50%;
+	height: 500px;
+	text-align: top;
 }
 
 .sign-setup{
@@ -122,33 +152,3 @@
 	display: inline;
 }
 
-#welcome{
-	margin-bottom: 0px;
-}
-
-#slogan{
-	margin-top: 0px;
-	margin-left: 5%;
-}
-
-#article-link{
-	display: block;
-	width: 30%;
-	margin: 0 auto;
-}
-
-#account{
-	margin-left: 10%;
-}
-#login{
-	position: absolute;
-	margin-left: 23%;
-	margin-top: 15%;
-	
-}
-
-#content{
-	width: 50%;
-	height: 500px;
-	text-align: top;
-}

@@ -14,20 +14,26 @@
 		</div><!--end of modal-info-->
 	</div><!--end of modal-content-->
 </div><!--end of modal-container-->
-<h5 id="last-update">Last updated:<%=@article.edit_times.last.time%>   By User Name: <%=@article.edit_times.last.users.first.user_name%></h5>
+<%if @article.edit_times.last == nil %>
+<h5> Article has not been updated yet.</h5>
+<%else%>
+<h5 id="last-update">Last updated:<%=@article.edit_times.last.time.strftime("%e %b %Y %H:%M:%S%p")%>   By User Name: <%=@article.edit_times.last.users.first.user_name%></h5>
+<%end%>
 <%if @user%>
 <a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
-<button id="contact-editor">Contact Recent Editor</button>
+	<%if @article.edit_times.last %>
+		<button id="contact-editor">Contact Recent Editor</button>
+		<div class="modal-container editor">
+			<div class="modal-content">
+				<button class="close editor">X</button>
+				<div class="modal-info">
+				<h3>Editor Name: <%=@article.edit_times.last.users.first.f_name%> <%=@article.edit_times.last.users.first.l_name%></h3>
+				<h3>E-mail: <%=@article.edit_times.last.users.first.e_mail%></h3>
+		<%end%>
 <%end%>
-<div class="modal-container editor">
-	<div class="modal-content">
-		<button class="close editor">X</button>
-		<div class="modal-info">
-		<h3>Editor Name: <%=@article.edit_times.last.users.first.f_name%> <%=@article.edit_times.last.users.first.l_name%></h3>
-		<h3>E-mail: <%=@article.edit_times.last.users.first.e_mail%></h3>
 		</div><!--end of modal-info-->
 	</div><!--end of modal-content-->
-</div><!--end of modal-container-->
+</div><!--end of modal-container--> 
 <h3>Categories:</h3>
 <ul>
 	<%@art_cats.each do |art_cat|%>

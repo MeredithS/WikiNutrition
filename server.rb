@@ -10,12 +10,27 @@ module App
 
 		get ("/articles") do
 			@user = User.find(session[:user_id]) if session[:user_id]
-			@articles=Article.all
+			articles=Article.all
+			@sorted_articles = articles.sort_by {|art| art.title}
 			@categories=Category.all
 			erb :index
 		end
 
-		get("/articles/sortby/:category")do
+		get("/articles/recent") do
+			articles=Article.all
+			art_edits=articles.map do |article| 
+				article.edit_times.last
+			end
+			update_art_edits = art_edits.reject {|time| time == nil}
+			if update_art_edits.length == 1
+				@recent_edits = update_art_edits
+			elsif update_art_edits.length >1
+				@recent_edits=update_art_edits.sort {|a, b| b <=> a }
+			end
+			erb :recent_articles
+		end
+
+		get("/articles/sortby/:category") do
 			@category = Category.find_by({name: params[:category]})
 			@cat_arts = @category.articles
 			erb :show_by_category
@@ -31,7 +46,7 @@ module App
 			@user = User.find(session[:user_id]) if session[:user_id]
 			@article = Article.find(params[:id])
 			@categories = Category.all
-			@art_cats=@article.categories			
+			@art_cats=@article.categories		
 			
 			erb :show
 		end
@@ -42,9 +57,10 @@ module App
 			erb :edit_article
 		end
 
+
+
 		post("/articles") do
 			article=Article.create(title: params[:title], date_published: DateTime.now, content: params[:content], img_url: params[:img_url], user_id: session[:user_id])
-			binding.pry
 			if params[:category] && params[:drop_down]
 				cat1=Category.find_by({name: params[:drop_down].upcase})
 				cat2=Category.create(name: params[:category].upcase.chomp)
@@ -87,9 +103,7 @@ module App
 				article.categories<<cat2
 			end
 			redirect to ("/articles/#{id}")
-
 		end
-
 
 		get ("/login") do
 			erb :login
@@ -110,7 +124,6 @@ module App
 			redirect to ("/")
 		end
 
-
 		get("/users/new") do
 			erb :user_new
 		end
@@ -123,7 +136,6 @@ module App
 				redirect to ("/login")
 			end
 		end
-
 
 	end
 end
