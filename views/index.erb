@@ -1,42 +1,51 @@
-<%if @user %>
-<h1>Hello and Welcome <%=@user.f_name%>
-<%end%>
-<h3>Nutrition Articles</h3>
-<ul>
-	<% @sorted_articles.each do |article| %>
-	 	<li>
-	 	Title: <a href="/articles/<%=article['id']%>"><%=article['title']%></a>
-	 	</br>
-	 	Date Published: <%=article['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
-	 	</br>
-	 		<%author=article.user%>
-	 	Author: <%=author.l_name%>, <%=author.f_name%>
-	 	</li>
-	 <%end%>
-</ul>
-<h4>Sort By:</h4>
-	<h5>Category:</h5>
-	<ul>
-		<%@categories.each do |category|%>
-		<li>
-			<a href="/articles/sortby/<%=category.name%>"><%=category.name.capitalize%></a>
-		</li>
+<div class="norm-background">
+	<div class="article-container">
+		<%if @user %>
+			<h1>Welcome <%=@user.f_name%>!</h1>
 		<%end%>
-	</ul>
-	<h5>Recently Updated:</h5>
-	<ul>
-		<li>
-			<a href="/articles/recent">Recently Updated</a>
-		</li>
-	</ul>	
-
-
-<%if @user%>
-<a href="/articles/new">Publish a new Article<a/>
-<form action="/sessions" method="POST">
-  <input type="hidden" name="_method" value="delete">
-  <button>Log Out</button>
-</form>
-<%else%>
-<h3>For more features please:</h3><a href="/login">Log In</a>
-<%end%>
+		<h2>Nutrition Articles</h2>
+			<p>(Displayed in Alphabetical Order)</p>
+			<ul>
+				<% @sorted_articles.each do |article| %>
+				 	<li class="preview">
+				 	<a href="/articles/<%=article['id']%>">Title: <b><%=article['title']%></b>
+				 	</br>
+				 	Date Published: <%=article['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
+				 	</br>
+				 	<%author=article.user%>
+				 	Author: <%=author.l_name%>, <%=author.f_name%></a>
+				 	</li>
+				 <%end%>
+			</ul>
+	</div><!--end of div article-container-->
+	<div class="sidebar">
+		<div class="sidebar-content">
+			<h4>Sort By:</h4>
+				<h5>Category:</h5>
+				<ul>
+					<%@categories.each do |category|%>
+					<li>
+						<a href="/articles/sortby/<%=category.name%>"><%=category.name.capitalize%></a>
+					</li>
+					<%end%>
+				</ul>
+				<h5>Recently Updated:</h5>
+				<ul>
+					<li>
+						<a href="/articles/recent">Recently Updated</a>
+					</li>
+				</ul>
+			</div><!--end of sidebar content-->
+		</div><!--end of div sidebar-->
+		<div class="footer">
+			<%if @user%>
+				<a href="/articles/new">Publish a new Article<a/>
+				<form action="/sessions" method="POST">
+				  <input type="hidden" name="_method" value="delete">
+				  <button>Log Out</button>
+				</form>
+			<%else%>
+				<h3>For more features please<a href="/login"> Log In</a></h3>
+			<%end%>
+		</div><!--end div footer-->
+</div><!--end div norm-background-->

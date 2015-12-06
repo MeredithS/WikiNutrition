@@ -37,7 +37,7 @@ module App
 		end
 
 		get("/articles/new") do
-			redirect to "/" if !session[:user_id]
+			redirect to "/login" if !session[:user_id]
 			@categories = Category.all
 			erb :article_new
 		end
@@ -87,7 +87,6 @@ module App
 		end
 
 		post("/articles/:id/edit/categories") do
-			binding.pry
 			id = params[:id]
 			article=Article.find(params[:id])
 			if params[:category] != "" && params[:drop_down]

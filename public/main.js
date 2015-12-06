@@ -8,7 +8,6 @@ $(document).ready(function() {
 	var modalEditorCloseButton = $(".close.editor");
 	var addCatButton = $("#add-category");
 	var addCatForm = $("#category-form");
-	var textArea = $("#bob").val();
 
 
 	var toggleAuthModal = function(){
