@@ -1,11 +1,10 @@
 require_relative'config'
 
-# users =[
-# {user_name: 'MerBear', f_name: 'Meredith', l_name: 'Salguero', e_mail: 'MMMHoney@hotmail.com'},
-# {user_name: 'ChillChris', f_name: 'Chris', l_name: 'Johnson', e_mail: 'ChillChris@yahoo.com'}
-# ]
+users =[
+{user_name: 'MerBear', password_digest: $2a$10$.W7iOcPgI4vy2z69agwFNO7yzznlNGLYqbFns9B6dFQ1rVbcx1PJ2,f_name: 'Meredith', l_name: 'Salguero', e_mail: 'MMMHoney@hotmail.com'}
+]
 
-# User.create(users)
+User.create(users)
 
 articles = [
 {title: "Veggies", date_published: DateTime.new(2015,12,01,8,37), content: "Veggies are soo Yummy", img_url: "http://www.valeotraining.com/wp-content/uploads/2013/04/veggies-1.jpg", user_id: 1}

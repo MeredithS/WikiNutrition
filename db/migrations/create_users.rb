@@ -1,6 +1,6 @@
 require_relative "../config"
 
-class CreateUsers <ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration
 	def up
 		create_table :users do |t|
 			t.string(:user_name)

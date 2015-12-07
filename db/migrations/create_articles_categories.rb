@@ -13,3 +13,5 @@ class CreateArticlesCategories < ActiveRecord::Migration
 		drop_table :articles_categories
 	end
 end
+
+CreateArticlesCategories.migrate(ARGV[0])

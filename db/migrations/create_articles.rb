@@ -16,4 +16,4 @@ class CreateArticles <ActiveRecord::Migration
 	end
 end
 
-CreateArticles.migration(ARGV[0])
+CreateArticles.migrate(ARGV[0])

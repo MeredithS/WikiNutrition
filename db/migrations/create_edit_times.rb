@@ -11,3 +11,5 @@ class CreateEditTimes <ActiveRecord::Migration
 		drop_table :edit_times
 	end
 end
+
+CreateEditTimes.migrate(ARGV[0])
