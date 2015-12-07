@@ -1,7 +1,12 @@
 require_relative'config'
 
 users =[
-{user_name: 'MerBear', password_digest: $2a$10$.W7iOcPgI4vy2z69agwFNO7yzznlNGLYqbFns9B6dFQ1rVbcx1PJ2,f_name: 'Meredith', l_name: 'Salguero', e_mail: 'MMMHoney@hotmail.com'}
+{user_name: 'MerBear',
+ password: 'fuzzy', 
+ password_confirmation: 'fuzzy',
+ f_name: 'Meredith', 
+ l_name: 'Salguero', 
+ e_mail: 'MMMHoney@hotmail.com'}
 ]
 
 User.create(users)
