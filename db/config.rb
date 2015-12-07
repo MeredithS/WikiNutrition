@@ -26,3 +26,5 @@ ActiveRecord::Base.establish_connection(db_config)
 Dir.glob("models/*.rb").each do |path|
 	require_relative "../#{path}"
 end
+
+Time.zone = "EST"

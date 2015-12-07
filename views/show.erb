@@ -1,61 +1,75 @@
-<img src="<%=@article['img_url']%>">
-<h1><%=@article['title']%></h1>
-	<p><%= @article.to_html %></p>
-<h4 id="author">By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
-<%if @user%>
-<button id="contact-author">Contact Author</button>
-<%end%>
-<div class="modal-container author">
-	<div class="modal-content">
-		<button class="close authors">X</button>
-		<div class="modal-info">
-		<h3>Author Name: <%=@article.user.f_name%> <%=@article.user.l_name%></h3>
-		<h3>E-mail: <%=@article.user.e_mail%></h3>
-		</div><!--end of modal-info-->
-	</div><!--end of modal-content-->
-</div><!--end of modal-container-->
-<%if @article.edit_times.last == nil %>
-<h5> Article has not been updated yet.</h5>
-<%else%>
-<h5 id="last-update">Last updated:<%=@article.edit_times.last.time.strftime("%e %b %Y %H:%M:%S%p")%>   By User Name: <%=@article.edit_times.last.users.first.user_name%></h5>
-<%end%>
-<%if @user%>
-<a href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
-	<%if @article.edit_times.last %>
-		<button id="contact-editor">Contact Recent Editor</button>
-		<div class="modal-container editor">
-			<div class="modal-content">
-				<button class="close editor">X</button>
-				<div class="modal-info">
-				<h3>Editor Name: <%=@article.edit_times.last.users.first.f_name%> <%=@article.edit_times.last.users.first.l_name%></h3>
-				<h3>E-mail: <%=@article.edit_times.last.users.first.e_mail%></h3>
+<div class="norm-background">
+	<div class="show-image">
+		<img src="<%=@article['img_url']%>" height="400" width="450">
+	</div><!--end div show-image-->
+	<div class="article-container">
+		<h1><%=@article['title']%></h1>
+			<p><%= @article.to_html %></p>
+		<h4 id="author">By: <%=@article.user.f_name%> <%=@article.user.l_name%></h4>
+		<%if @user%>
+			<button id="contact-author">Contact Author</button>
 		<%end%>
-<%end%>
-		</div><!--end of modal-info-->
-	</div><!--end of modal-content-->
-</div><!--end of modal-container--> 
-<h3>Categories:</h3>
-<ul>
-	<%@art_cats.each do |art_cat|%>
-	<li><%=art_cat.name.capitalize%></li>
-	<%end%>
-</ul>
-<%if @user%>
-<button id="add-category">Add A Category</button>
-<div id="category-form">
-	<form action="/articles/<%=@article['id']%>/edit/categories" method="POST">
-		<label for="category">Create a New Category:</label>
-		<input id="category" type="text" name="category">
-		<label for="category-drop">Or Choose From an Already Existing Category:</label>
-		<select id="category-drop"name="drop_down">
-			<option value="" disabled selected>Select</option>
-			<% @categories.each do |category| %>
-			<option value="<%=category.name%>"><%=category.name.capitalize%></option>
+		<div class="modal-container author">
+			<div class="modal-content">
+				<button class="close authors">X</button>
+				<div class="modal-info">
+					<h3>Author Name: <%=@article.user.f_name%> <%=@article.user.l_name%></h3>
+					<h3>E-mail: <%=@article.user.e_mail%></h3>
+				</div><!--end of modal-info-->
+			</div><!--end of modal-content-->
+		</div><!--end of modal-container-->
+		<%if @article.edit_times.last == nil %>
+			<h5> Article has not been updated yet.</h5>
+		<%else%>
+			<h5 id="last-update">Last updated:<%=@article.edit_times.last.time.strftime("%e %b %Y %H:%M:%S%p")%>   By Username: <%=@article.edit_times.last.users.first.user_name%></h5>
+		<%end%>
+		<%if @user%>
+			<a id="edit-button" href ="/articles/<%=@article['id']%>/edit">Edit Article</a>
+			<%if @article.edit_times.last %>
+				<button id="contact-editor">Contact Recent Editor</button>
+				<div class="modal-container editor">
+					<div class="modal-content">
+						<button class="close editor">X</button>
+						<div class="modal-info">
+							<h3>Editor Name: <%=@article.edit_times.last.users.first.f_name%> <%=@article.edit_times.last.users.first.l_name%></h3>
+							<h3>E-mail: <%=@article.edit_times.last.users.first.e_mail%></h3>
 			<%end%>
-		</select>
-		<input type="submit" value="Add Category">
-	</form>
-</div><!--end of category-form div -->
-<%end%>
-
-<a href="/articles">Back to Articles</a>
+		<%end%>
+						</div><!--end of modal-info-->
+					</div><!--end of modal-content-->
+				</div><!--end of modal-container-->
+			</div><!--end of div article-container-->
+	<div class="categories">		
+		<h3>Categories:</h3>
+		<ul>
+			<%@art_cats.each do |art_cat|%>
+			<li><%=art_cat.name.capitalize%></li>
+			<%end%>
+		</ul>
+		<%if @user%>
+			<button id="add-category">Add A Category</button>
+			<div id="category-form">
+				<form action="/articles/<%=@article['id']%>/edit/categories" method="POST">
+					<label for="category">Create a New Category:</label>
+					<input autofocus id="category" type="text" name="category">
+					<label for="category-drop">Or Choose From an Already Existing Category:</label>
+					<select id="category-drop"name="drop_down">
+						<option value="" disabled selected>Select</option>
+						<% @categories.each do |category| %>
+						<option value="<%=category.name%>"><%=category.name.capitalize%></option>
+						<%end%>
+					</select>
+					</br>
+					</br>
+					<input type="submit" value="Add Category">
+				</form>
+			</div><!--end of category-form div -->
+		<%end%>
+	</div><!--end of categories-->
+	<div class="footer">
+		<a href="/articles">Back to Articles</a>
+		<%if !@user%>
+		<a href="/login">Log In</a>
+		<%end%>
+	</div><!--end of footer div -->
+</div><!--norm-background-->

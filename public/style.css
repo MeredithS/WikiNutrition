@@ -1,3 +1,7 @@
+body{
+	background-color: #E9EAEC;
+	background-attachment: fixed;
+}
 .navbar{
 	list-style-type: none;
 	margin: 0;
@@ -67,11 +71,6 @@ display: inline;
 	margin: 0 auto;
 }
 
-.norm-background{
-	background-color: #E9EAEC;
-	height: 100vh;
-}
-
 #login-container{
 	width: 50%;
 	height: 30%;
@@ -117,7 +116,7 @@ display: inline;
 	border: 2px solid #552000;
 	width: 30%;
 	margin-left: 5%;
-	height: 40%;
+	height: 45%;
 	float: left;
 	background-color: #A8DB92;
 }
@@ -156,8 +155,15 @@ display: inline;
 	width: 40%;
 	display: inline-block;
 	margin-left: 5%;
-	/*border: 1px solid black;*/
+	margin-top: 2%;
+	margin-bottom: 3%;
+}
 
+.logout-button{
+	position: relative;
+	margin-top: 2%;
+	margin-right: 3%;
+	float: right;
 }
 
 .article-container ul{
@@ -187,21 +193,21 @@ display: inline;
 	margin-bottom: 0;
 }
 
-.article-container p{
-	padding-top: 0;
-	margin-top: 0;
+.article-container{
+	width: 40%;
+	float: left;
 }
 
 .sidebar{
 	background-color: #F8F8F8;
-	float: right;
+	float: left;
 	position: fixed;
 	border: 1px solid black;
 	border-radius: 10%;
 	width: 20%;
 	display: inline-block;
 	margin: 0 auto;
-	margin-right: 15%;
+	margin-right: 10%;
 	margin-left: 10%;
 	margin-top: 5%;
 	padding: 30px 0px 30px 0px;
@@ -211,12 +217,23 @@ display: inline;
 	width: 50%;
 	margin: 0 auto;
 	padding-right: 0;
-
-
 }
 
 .footer{
 	clear: both;
+	margin-left: 5%;
+	margin-top: 30px;
+}
+
+.footer a{
+	border: 3px solid #4D5D7D;
+	text-decoration: none;
+	color: #4D5D7D;
+	padding: 10px;
+}
+
+.footer a:hover{
+	background-color: #FFFDFC;
 }
 
 .modal-container{
@@ -244,11 +261,21 @@ display: inline;
 }
  #category-form{
  	display:none;
- 	border: 2px solid black;
  }
 
 #author{
 	display: inline;
+}
+
+#edit-button{
+	border: 3px solid #4D5D7D;
+	text-decoration: none;
+	color: #4D5D7D;
+	padding: 10px;
+}
+
+#edit-button:hover{
+	background-color: #FFFDFC;
 }
 #contact-author{
 	display: inline-block;
@@ -256,5 +283,33 @@ display: inline;
 }
 #last-update{
 	display: inline;
+	margin-top: 10px;
 }
+
+.show-image{
+	float: right;
+	margin-right: 10%;
+	margin-top: 5%;
+}
+
+.form textarea{
+	display: block;
+
+}
+
+.edit-article-form{
+	margin-top: 3%;
+}
+
+.textarea{
+	margin-top: 20px;
+	vertical-align: top;
+}
+
+.categories{
+	width: 25%;
+	float: right;
+	margin-right: 15%;
+}
+
 

@@ -1,15 +1,21 @@
-<h1><%=@category.name%></h1>
-<ul>
-	<%@cat_arts.each do |cat_art|%>
-	<li>
-		Title:<a href="/articles/<%=cat_art.id%>"><%=cat_art.title%></a>
-		</br>
-	 	Date Published: <%=cat_art.date_published.strftime("%e %b %Y %H:%M:%S%p")%>
-	 	</br>
-	 		<%author=cat_art.user%>
-	 	Author: <%=author.l_name%>, <%=author.f_name%>
-	</li>
+<div class="article-container">
+	<h1><%=@category.name%></h1>
+	<ul>
+		<%@cat_arts.each do |cat_art|%>
+		<li>
+			Title:<a href="/articles/<%=cat_art.id%>"><%=cat_art.title%></a>
+			</br>
+		 	Date Published: <%=cat_art.date_published.in_time_zone("America/New_York").strftime("%e %b %Y %H:%M:%S%p")%>
+		 	</br>
+		 		<%author=cat_art.user%>
+		 	Author: <%=author.l_name%>, <%=author.f_name%>
+		</li>
+		<%end%>
+	</ul>
+</div>
+<div class="footer">
+	<a href="/articles">All Articles</a>
+	<%if !@user%>
+		<a href="/login"> Log In</a>
 	<%end%>
-</ul>
-
-<a href="/articles">Back to Articles</a>
+</div>

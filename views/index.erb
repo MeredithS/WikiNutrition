@@ -4,13 +4,13 @@
 			<h1>Welcome <%=@user.f_name%>!</h1>
 		<%end%>
 		<h2>Nutrition Articles</h2>
-			<p>(Displayed in Alphabetical Order)</p>
+			<p>(In Alphabetical Order)</p>
 			<ul>
 				<% @sorted_articles.each do |article| %>
 				 	<li class="preview">
 				 	<a href="/articles/<%=article['id']%>">Title: <b><%=article['title']%></b>
 				 	</br>
-				 	Date Published: <%=article['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
+				 	Date Published: <%=article['date_published'].in_time_zone("America/New_York").strftime("%e %b %Y %H:%M:%S%p")%>
 				 	</br>
 				 	<%author=article.user%>
 				 	Author: <%=author.l_name%>, <%=author.f_name%></a>
@@ -37,15 +37,18 @@
 				</ul>
 			</div><!--end of sidebar content-->
 		</div><!--end of div sidebar-->
+		<div class="logout-button">
+		<%if @user%>
+			<form action="/sessions" method="POST">
+			  <input type="hidden" name="_method" value="delete">
+			  <button id="logout">Log Out</button>
+			</form>
+		<%end%>
+		</div><!--end of logout-button div-->
 		<div class="footer">
-			<%if @user%>
-				<a href="/articles/new">Publish a new Article<a/>
-				<form action="/sessions" method="POST">
-				  <input type="hidden" name="_method" value="delete">
-				  <button>Log Out</button>
-				</form>
-			<%else%>
-				<h3>For more features please<a href="/login"> Log In</a></h3>
+			<%if !@user%>
+				<h3>For more features please:</h3>
+				<a href="/login"> Log In</a>
 			<%end%>
 		</div><!--end div footer-->
 </div><!--end div norm-background-->

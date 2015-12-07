@@ -1,21 +1,28 @@
 <div class="norm-background">
 	<div class="article-container">
 		<h2>Recently Updated Articles</h2>
-			<p>(Displayed most recently edited at the top)</p>
+			<p>(Most Recently Edited At The Top)</p>
+		<% if @recent_edits ==  nil %>
+			<h4>No articles have been recently updated</h4>
+		<%else%>
 		<ul>
 			<% @recent_edits.each do |time|%>
 				<li>
 			 	Title: <a href="/articles/<%=time.articles.first['id']%>"><%=time.articles.first['title']%></a>
 			 	</br>
-			 	Date Published: <%=time.articles.first['date_published'].strftime("%e %b %Y %H:%M:%S%p")%>
+			 	Date Published: <%=time.articles.first['date_published'].in_time_zone("America/New_York").strftime("%e %b %Y %H:%M:%S%p")%>
 			 	</br>
 			 		<%author=time.users.first%>
 			 	Author: <%=author.l_name%>, <%=author.f_name%>
 			 	</li>
 			 <%end%>
 		</ul>
+		<%end%>
 	</div><!--end of div article-container-->
 	<div class="footer">
-		<a href="/articles">Back to Articles</a>
+		<a href="/articles">All Articles</a>
+		<%if !@user%>
+			<a href="/login"> Log In</a>
+		<%end%>
 	</div><!--end of div footer-->
 </div><!--end of div norm-background-->

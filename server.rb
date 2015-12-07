@@ -60,27 +60,41 @@ module App
 
 
 		post("/articles") do
-			article=Article.create(title: params[:title], date_published: DateTime.now, content: params[:content], img_url: params[:img_url], user_id: session[:user_id])
-			if params[:category] && params[:drop_down]
+
+			article=Article.create(title: params[:title], date_published: Time.now, content: params[:content], img_url: params[:img_url], user_id: session[:user_id])
+			if params[:category] != "" && params[:drop_down]
+				if article.categories.find_by({name: params[:drop_down].upcase}) == nil
+					cat1=Category.find_by({name: params[:drop_down].upcase})
+					article.categories<<cat1
+				end
+				if Category.find_by({name: params[:category].upcase}) == nil
+					cat2=Category.create(name: params[:category].upcase.chomp)
+					article.categories<<cat2
+				elsif Category.find_by({name: params[:category].upcase}) != nil && article.categories.find_by({name: params[:category].upcase}) == nil
+					cat2 = Category.find_by({name: params[:category].upcase})
+					article.categories<<cat2
+				end
+			elsif params[:category] == "" && article.categories.find_by({name: params[:drop_down].upcase}) == nil
 				cat1=Category.find_by({name: params[:drop_down].upcase})
-				cat2=Category.create(name: params[:category].upcase.chomp)
 				article.categories<<cat1
-				article.categories<<cat2
-			elsif params[:category] === "" && article.categories.find_by({name: params[:drop_down].upcase}) === nil
-				cat1=Category.find_by({name: params[:drop_down].upcase})
-				article.categories<<cat1
-			elsif params[:drop_down] === nil && article.categories.find_by({name: params[:category].upcase}) === nil
-				cat2=Category.create(name: params[:category].upcase.chomp)
-				article.categories<<cat2
+			elsif params[:drop_down] == nil && article.categories.find_by({name: params[:category].upcase}) == nil
+				if Category.find_by({name: params[:category].upcase}) == nil 
+					cat2 = Category.create(name: params[:category].upcase.chomp)
+					article.categories<<cat2
+				else
+					cat2 = Category.find_by({name: params[:category].upcase})
+					article.categories<<cat2
+				end
 			end
 			redirect to("/articles")
 		end
 
 		patch("/articles/:id") do
+
 			id = params[:id]
 			article=Article.find(params[:id])
 			article.update(title: params[:title], content: params[:content], img_url: params[:img_url])
-			edit_time=EditTime.create(time: DateTime.now)
+			edit_time=EditTime.create(time: Time.now)
 			article_edit_time=ArticleEditTime.create(article_id: params[:id].to_i, edit_time_id: edit_time.id, user_id: session[:user_id])
 			redirect to ("articles/#{id}")
 
@@ -90,16 +104,28 @@ module App
 			id = params[:id]
 			article=Article.find(params[:id])
 			if params[:category] != "" && params[:drop_down]
-				cat1=Category.find_by({name: params[:drop_down].upcase})
-				cat2=Category.create(name: params[:category].upcase.chomp)
-				article.categories<<cat1
-				article.categories<<cat2
+				if article.categories.find_by({name: params[:drop_down].upcase}) == nil
+					cat1=Category.find_by({name: params[:drop_down].upcase})
+					article.categories<<cat1
+				end
+				if Category.find_by({name: params[:category].upcase}) == nil
+					cat2=Category.create(name: params[:category].upcase.chomp)
+					article.categories<<cat2
+				elsif Category.find_by({name: params[:category].upcase}) != nil && article.categories.find_by({name: params[:category].upcase}) == nil
+					cat2 = Category.find_by({name: params[:category].upcase})
+					article.categories<<cat2
+				end
 			elsif params[:category] == "" && article.categories.find_by({name: params[:drop_down].upcase}) == nil
 				cat1=Category.find_by({name: params[:drop_down].upcase})
 				article.categories<<cat1
 			elsif params[:drop_down] == nil && article.categories.find_by({name: params[:category].upcase}) == nil
-				cat2=Category.create(name: params[:category].upcase.chomp)
-				article.categories<<cat2
+				if Category.find_by({name: params[:category].upcase}) == nil 
+					cat2 = Category.create(name: params[:category].upcase.chomp)
+					article.categories<<cat2
+				else
+					cat2 = Category.find_by({name: params[:category].upcase})
+					article.categories<<cat2
+				end
 			end
 			redirect to ("/articles/#{id}")
 		end
