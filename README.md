@@ -7,7 +7,7 @@
 
 ###Link to Application###
 
-[Visit WikiNutrition](http://merediths.github.io/WikiNutrition/)
+[Visit WikiNutrition](https://secret-citadel-8161.herokuapp.com/)
 
 ###Technologies Used###
 
