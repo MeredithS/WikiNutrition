@@ -3,7 +3,6 @@ require_relative'config'
 users =[
 {user_name: 'MerBear',
  password: 'fuzzy', 
- password_confirmation: 'fuzzy',
  f_name: 'Meredith', 
  l_name: 'Salguero', 
  e_mail: 'MMMHoney@hotmail.com'}
