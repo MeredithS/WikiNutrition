@@ -15,6 +15,14 @@
 				 	<%author=article.user%>
 				 	Author: <%=author.l_name%>, <%=author.f_name%></a>
 				 	</li>
+				 	<%if @user%>
+				 		<%if @user.user_name == "MerBear"%>
+						 	<form method="POST" action="/articles/<%=article['id']%>" >
+						 		<input type="hidden" name="_method" value="DELETE">
+						 		<button>Delete Article</button>
+						 	</form>
+				 		<%end%>
+				 	<%end%>
 				 <%end%>
 			</ul>
 	</div><!--end of div article-container-->

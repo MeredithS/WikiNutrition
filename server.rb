@@ -100,6 +100,12 @@ module App
 
 		end
 
+		delete("/articles/:id") do
+			art = Article.find(params[:id])
+			art.destroy
+			redirect to ("/articles")
+		end
+
 		post("/articles/:id/edit/categories") do
 			id = params[:id]
 			article=Article.find(params[:id])
