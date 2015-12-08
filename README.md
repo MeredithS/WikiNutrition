@@ -24,7 +24,7 @@
 ###Planning Materials###
 
 ####Wire Frames####
-![WIREFRAME](/wireframe.png)
+![WIREFRAME](/WikiNutrition_wireframe.png)
 
 ####ERD####
 ![ERD](/WikiNutrition_ERD.png)
