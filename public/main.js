@@ -1,4 +1,3 @@
-console.log('connected')
 $(document).ready(function() {
 	var contAuthButton = $("#contact-author");
 	var authModal = $(".modal-container.author");
@@ -20,7 +19,7 @@ $(document).ready(function() {
 
 	var toggleCatForm = function(){
 		addCatForm.toggle();
-	}
+	};
 
 	$('#user').focus();
 	$('#f-name').focus();
@@ -30,9 +29,6 @@ $(document).ready(function() {
 	contEditorButton.on('click', toggleEditorModal);
 	modalEditorCloseButton.on('click', toggleEditorModal);
 	addCatButton.on('click', toggleCatForm);
-
-
-
 
 });
 

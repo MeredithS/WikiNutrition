@@ -8,7 +8,7 @@
 	<label for="category">Create a New Category:</label>
 	<input id="category" type="text" name="category">
 	<label for="category-drop">Or Choose From an Already Existing Category:</label>
-	<select id="category-drop"name="drop_down">
+	<select id="category-drop" name="drop_down">
 		<option value="" disabled selected>Select</option>
 		<% @categories.each do |category| %>
 		<option value="<%=category.name%>"><%=category.name.capitalize%></option>
