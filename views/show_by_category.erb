@@ -3,12 +3,12 @@
 	<ul>
 		<%@cat_arts.each do |cat_art|%>
 		<li>
-			Title:<a href="/articles/<%=cat_art.id%>"><%=cat_art.title%></a>
+			Title:<a href="/articles/<%=cat_art.id%>"><%=cat_art.title%>
 			</br>
 		 	Date Published: <%=cat_art.date_published.in_time_zone("America/New_York").strftime("%e %b %Y %H:%M:%S%p")%>
 		 	</br>
 		 		<%author=cat_art.user%>
-		 	Author: <%=author.l_name%>, <%=author.f_name%>
+		 	Author: <%=author.l_name%>, <%=author.f_name%></a>
 		</li>
 		<%end%>
 	</ul>
